@@ -16,6 +16,11 @@ public class Main {
 
         if (!inZip.exists()) {
             System.err.println("Input file doesn't exist: " + inZip.getPath());
+            System.exit(1);
+        }
+
+        if (!inZip.isFile()) {
+            System.err.println("Input path must be of a file");
         }
 
         if (!outZip.createNewFile()) {
@@ -29,8 +34,6 @@ public class Main {
                 ZipAlign.alignZip(in, out);
                 System.out.println("Zip successfully aligned");
             }
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + inZip);
         }
     }
 }
